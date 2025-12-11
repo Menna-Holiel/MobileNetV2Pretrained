@@ -1,61 +1,74 @@
-````markdown
-# Face Recognition with MobileNetV2 (Transfer Learning)
+Face Recognition with MobileNetV2 (Transfer Learning)
+Overview
 
-## Overview
+This project implements a face recognition system using MobileNetV2 with transfer learning.
+The model is trained on a balanced subset of VGGFace2, consisting of 15 classes with 900 images per class.
 
-This project implements a **face recognition system** using **MobileNetV2** with transfer learning.  
-The model is trained on a **balanced subset of VGGFace2**, consisting of **15 classes** with **900 images per class**.  
+The main goal is to leverage pretrained ImageNet features and advanced data augmentation to achieve high classification accuracy.
 
-The goal is to achieve **high classification accuracy** while leveraging pretrained ImageNet features and advanced data augmentation.
+Features
 
----
+Transfer Learning: Uses MobileNetV2 backbone pretrained on ImageNet.
 
-## Features
+Data Augmentation & Normalization:
 
-- **Transfer Learning:** MobileNetV2 backbone pretrained on ImageNet.
-- **Data Augmentation & Normalization:**
-  - Random horizontal flip
-  - Random rotation
-  - Random zoom
-  - Random contrast
-  - Random brightness
-  - Rescaling to [0,1]
-- **Training Strategy:**
-  - Frozen backbone training
-  - Fine-tuning last 30 layers
-  - BatchNormalization layers frozen during fine-tuning
-- **Callbacks:**
-  - `ModelCheckpoint` – save best model weights
-  - `EarlyStopping` – prevent overfitting
-  - `ReduceLROnPlateau` – reduce learning rate when stuck
-- **Evaluation:**
-  - Test accuracy & loss
-  - Confusion matrix
-  - Classification report (precision, recall, F1-score)
-  - ROC curves & AUC per class
-  - Training & fine-tuning accuracy/loss curves
+Random horizontal flip
 
----
+Random rotation
 
-## Dataset
+Random zoom
 
-- Path: `VGGFace2_balanced_900_albumentations`
-- Classes: 15
-- Images per class: 900 (balanced)
-- Image size: 224x224
-- Split: Train 70% / Validation 15% / Test 15%
+Random contrast
 
----
+Random brightness
 
-## Installation
+Rescaling pixel values to [0, 1]
 
-```bash
-git clone <your-repo-url>
-cd <repo-folder>
-pip install tensorflow matplotlib seaborn scikit-learn
-````
+Training Strategy:
 
----
+Train frozen backbone first
+
+Fine-tune last 30 layers
+
+Keep BatchNormalization layers frozen during fine-tuning to stabilize training
+
+Callbacks:
+
+ModelCheckpoint – Save best model weights
+
+EarlyStopping – Stop training to prevent overfitting
+
+ReduceLROnPlateau – Reduce learning rate when the model plateaus
+
+Evaluation Metrics:
+
+Test accuracy & loss
+
+Confusion matrix
+
+Classification report (precision, recall, F1-score)
+
+ROC curves & AUC per class
+
+Training & fine-tuning accuracy/loss curves
+
+Dataset
+
+Path: VGGFace2_balanced_900_albumentations
+
+Number of Classes: 15
+
+Images per Class: 900 (balanced)
+
+Image Size: 224×224 pixels
+
+Split:
+
+Training: 70%
+
+Validation: 15%
+
+Test: 15%
 
 ## Usage
 
@@ -107,6 +120,7 @@ test_loss, test_acc = model.evaluate(test_ds)
 * Model weights are automatically saved with `ModelCheckpoint`.
 
 ---
+
 
 
 
