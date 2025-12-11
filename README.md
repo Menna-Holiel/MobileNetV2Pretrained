@@ -1,5 +1,3 @@
-Absolutely! Here’s a polished, **GitHub-ready `README.md`** for your project:
-
 ````markdown
 # Face Recognition with MobileNetV2 (Transfer Learning)
 
@@ -109,6 +107,7 @@ test_loss, test_acc = model.evaluate(test_ds)
 * Model weights are automatically saved with `ModelCheckpoint`.
 
 ---
+
 
 
 
